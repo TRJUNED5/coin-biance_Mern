@@ -2,9 +2,12 @@ const express = require('express'); //importing express
 const dbConnect = require('./database/index'); //importing from database index.js
 const { PORT } = require('./config/index'); //importing port from config index
 const router = require('./routes/index'); //importing api from routes
-const errorHandler = require('./middleware/errorHandler');
+const errorHandler = require('./middlewares/errorHandler');
+const cookieParser = require('cookie-parser'); //importing cookieParser
 
 const app = express(); //making a object
+
+app.use(cookieParser()); //cookieparser middleware
 
 app.use(express.json()); //application to communicate data with json
 
