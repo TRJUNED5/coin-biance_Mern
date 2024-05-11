@@ -6,7 +6,7 @@ const refreshTokenSchema = Schema(
   {
     //creating a model
     token: { type: String, required: true }, //storing token
-    userId: { type: mongoose.SchemaTypes.ObjectId, ref: 'users' }, //token initiated in users
+    userId: { type: mongoose.SchemaTypes.ObjectId, ref: 'User' }, //token initiated in users
   },
   { timestamps: true }
 );

@@ -1,5 +1,6 @@
 const express = require('express'); //importing express
 const authController = require('../controller/authController'); //importing autrorized controller from controller
+const blogController = require('../controller/blogController');
 const auth = require('../middlewares/auth');
 
 const router = express.Router(); // intializing object router from express
@@ -22,6 +23,22 @@ router.post('/logout', auth, authController.logout); //logout api and auth middl
 router.get('/refresh', authController.refresh);
 
 //blog
+
+//create
+router.post('/blog', auth, blogController.create); //endpoint and auth protected endpoint
+
+//get all
+router.get('/blog/all', auth, blogController.getAll);
+
+//get blog by id
+router.get('/blog/:id', auth, blogController.getById);
+
+//update
+router.put('/blog', auth, blogController.update);
+
+//delete
+router.delete('/blog/:id', auth, blogController.delete);
+
 //CRUD
 //create
 //read all blogs

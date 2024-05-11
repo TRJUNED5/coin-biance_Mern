@@ -17,6 +17,8 @@ app.use(router); //using router function
 
 dbConnect(); //connecting to database
 
+app.use('/storage', express.static('storage')); //storing static storage to access the image
+
 //app.get('/', (req, res) => res.json({ msg: 'Hello world123!' })); //browser API & response
 
 app.use(errorHandler); //need to put it in the end to run it sequincially
