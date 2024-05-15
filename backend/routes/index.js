@@ -1,6 +1,7 @@
 const express = require('express'); //importing express
 const authController = require('../controller/authController'); //importing autrorized controller from controller
 const blogController = require('../controller/blogController');
+const commentController = require('../controller/commentController');
 const auth = require('../middlewares/auth');
 
 const router = express.Router(); // intializing object router from express
@@ -48,6 +49,9 @@ router.delete('/blog/:id', auth, blogController.delete);
 
 //comment
 //create comment
-//read comments by blog id
+router.post('/comment', auth, commentController.create);
+
+//get
+router.get('/comment/:id', auth, commentController.getById);
 
 module.exports = router;
