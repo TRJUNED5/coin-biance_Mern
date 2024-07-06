@@ -4,12 +4,20 @@ const { PORT } = require('./config/index'); //importing port from config index
 const router = require('./routes/index'); //importing api from routes
 const errorHandler = require('./middlewares/errorHandler');
 const cookieParser = require('cookie-parser'); //importing cookieParser
+const cors = require('cors');
+
+const corsOptions = {
+  credentials: true,
+  origin: ['http://localhost:3000'],
+};
 
 const app = express(); //making a object
 
 app.use(cookieParser()); //cookieparser middleware
 
-app.use(express.json()); //application to communicate data with json
+app.use(cors(corsOptions));
+
+app.use(express.json({ limit: '50mb' })); //application to communicate data with json & limit is for taking big picture from submit blog
 
 app.use(router); //using router function
 
